@@ -1,0 +1,53 @@
+﻿@using Accenture.Models
+@{
+    ViewBag.Title = "Student_Update";
+
+
+}
+<div class="container mt-5" style="max-width: 300px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="text-success">✏️ Edit Student</h5>
+        <a href="/Home/StudentList" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <form id="studentUpdateForm" action="/Home/Student_Update" method="post" class="border p-4 rounded-3 shadow-sm bg-light text-left">
+        <input type="hidden" name="StudentId" value="@Model.StudentId" />
+
+        <div class="mb-3">
+            <label class="form-label">Full Name <span class="text-danger">*</span></label>
+            <input type="text" name="Name" class="form-control" value="@Model.Name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email Address <span class="text-danger">*</span></label>
+            <input type="email" name="Email" class="form-control" value="@Model.Email" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Age <span class="text-danger">*</span></label>
+            <input type="number" name="Age" class="form-control" value="@Model.Age" required>
+        </div>
+
+        <center>
+            <button type="submit" class="btn btn-success mt-3">Update</button>
+        </center>
+    </form>
+</div>
+
+<script>
+    document.getElementById('studentUpdateForm').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        Swal.fire({
+            icon: 'success',
+            title: 'Student Information Updated!',
+            text: 'The student details have been successfully updated.',
+            confirmButtonText: 'OK'
+        }).then(function() {
+            e.target.submit();
+        });
+    });
+</script>
+
+

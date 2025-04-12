@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Student_Create";
+
+}
+
+<div class="container mt-5" style="max-width: 300px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="text-success">✏️ Add Student</h5>
+        <a href="/Home/StudentList" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <center>
+        <form id="studentForm" action="/Home/Student_Create" method="post" class="border p-4 rounded-3 shadow-sm bg-light text-left">
+
+            <div class="mb-3">
+                <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                <input type="text" name="Name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                <input type="email" name="Email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Age" class="form-label">Age <span class="text-danger">*</span></label>
+                <input type="number" name="Age" class="form-control" required>
+            </div>
+
+            <center>
+                <button type="submit" class="btn btn-success mt-3" value="upload">Submit</button>
+            </center>
+        </form>
+
+    </center>
+</div>
+
+
+<script>
+    document.getElementById('studentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            icon: 'success',
+            title: 'Form Submitted Successfully!',
+            text: 'Your student information has been saved.',
+            confirmButtonText: 'OK'
+        }).then(function() {
+            e.target.submit();
+        });
+    });
+</script>
+
+
